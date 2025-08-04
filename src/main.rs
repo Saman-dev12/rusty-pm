@@ -1,6 +1,8 @@
 mod commands;
 
+
 use commands::init::init;
+use commands::install::install;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
@@ -29,6 +31,7 @@ fn main() {
         }
         Commands::Install { package } => {
             println!("📦 Installing package: {}", package);
+		install(package);
         }
     }
 }
