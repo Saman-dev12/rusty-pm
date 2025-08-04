@@ -1,3 +1,6 @@
+mod commands;
+
+use commands::init::init;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
@@ -22,6 +25,7 @@ fn main() {
     match &cli.command {
         Commands::Init => {
             println!("🔧 Initializing project...");
+		init();
         }
         Commands::Install { package } => {
             println!("📦 Installing package: {}", package);
