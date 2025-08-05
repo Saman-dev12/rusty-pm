@@ -24,7 +24,7 @@ pub fn install(package: &str) {
     let mut manifest: RustyManifest =
         serde_json::from_reader(rusty_file_data).expect("Failed to parse rusty.json");
 
-    let node_modules = current_dir.join("node_moduless");
+    let node_modules = current_dir.join("node_modules");
     if !node_modules.exists() {
         create_dir_all(&node_modules).expect("Failed to create node_modules folder");
     }
@@ -69,11 +69,8 @@ pub fn install(package: &str) {
         target_dir.to_str().unwrap()
     );
 
-    // Update description
-    manifest.description = format!(
-        "{}\nInstalled: {}@{}",
-        manifest.description, package, latest
-    );
+	manifest.dependencies.push(format!("{} : {}",package.to_string(),latest.to_string()));  
+
 
     let manifest_file = File::create(&rusty_json_path).expect("Failed to rewrite rusty.json");
     serde_json::to_writer_pretty(manifest_file, &manifest)

@@ -37,6 +37,7 @@ pub fn init() {
         },
         author: author.trim().to_string(),
         description: description.trim().to_string(),
+	dependencies : Vec::new(),
     };
 
     let file_path = Path::new("rusty.json");
