@@ -15,5 +15,5 @@ Thumbs.db
 .Trashes
 ehthumbs.db
 
-rusty.json
+package.json
 node_modules

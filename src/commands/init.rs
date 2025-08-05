@@ -37,11 +37,11 @@ pub fn init() {
 	dependencies : Vec::new(),
     };
 
-    let file_path = Path::new("rusty.json");
-    let file = File::create(file_path).expect("Failed to create rusty.json");
+    let file_path = Path::new("package.json");
+    let file = File::create(file_path).expect("Failed to create package.json");
     serde_json::to_writer_pretty(file, &manifest).expect("Failed to write manifest");
 
-    println!("\n✅ Created rusty.json successfully!");
+    println!("\n✅ Created package.json successfully!");
 }
 
 

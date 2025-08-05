@@ -3,6 +3,7 @@ mod commands;
 
 use commands::init::init;
 use commands::install::install;
+use commands::remove::remove;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
@@ -19,6 +20,9 @@ enum Commands {
     Install {
         package: String,
     },
+    Remove {
+	package: String,	
+    }
 }
 
 fn main() {
@@ -32,7 +36,11 @@ fn main() {
         Commands::Install { package } => {
             println!("📦 Installing package: {}", package);
 		install(package);
-        }
+        },
+	Commands::Remove { package } => {
+	    println!("Removing package: {}" , package);
+	    remove(package);
+	}
     }
 }
 
