@@ -1,7 +1,5 @@
 use std::env;
-use std::fs::{self, create_dir_all, File};
-use std::io::{self, Cursor, Write};
-use std::path::{Path, PathBuf};
+use std::fs::{self, File};
 use super::manifest::RustyManifest;
 
 
