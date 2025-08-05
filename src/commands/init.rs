@@ -1,9 +1,6 @@
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
-use std::env;
-use std::fs::{self, create_dir_all, File};
-use std::io::{self, Cursor, Write};
-use std::path::{Path, PathBuf};
+use std::fs::File;
+use std::path::{Path};
+use std::io::{self,Write};
 use super::manifest::RustyManifest;
 
 pub fn init() {
