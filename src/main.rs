@@ -4,6 +4,8 @@ mod commands;
 use commands::init::init;
 use commands::install::install;
 use commands::remove::remove;
+use commands::exec::exec_command;
+use commands::run::run_script;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
@@ -22,7 +24,13 @@ enum Commands {
     },
     Remove {
 	package: String,	
-    }
+    },
+  Run {
+        script: String,
+    },
+  Exec {
+        command: String,
+    },
 }
 
 fn main() {
@@ -41,6 +49,14 @@ fn main() {
 	    println!("Removing package: {}" , package);
 	    remove(package);
 	}
+	Commands::Run { script } => {
+            println!("🚀 Running script: {}", script);
+            run_script(script);
+        }
+	Commands::Exec { command } => {
+            println!("Executing command: {}", command);
+            exec_command(command);
+        }
     }
 }
 

@@ -2,6 +2,7 @@ use std::fs::File;
 use std::path::{Path};
 use std::io::{self,Write};
 use super::manifest::RustyManifest;
+use std::collections::HashMap;
 
 pub fn init() {
     let mut name = String::new();
@@ -35,6 +36,7 @@ pub fn init() {
         author: author.trim().to_string(),
         description: description.trim().to_string(),
 	dependencies : Vec::new(),
+	scripts:HashMap::new(),
     };
 
     let file_path = Path::new("package.json");

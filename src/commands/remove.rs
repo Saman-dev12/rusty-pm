@@ -5,10 +5,10 @@ use super::manifest::RustyManifest;
 
 pub fn remove(package: &str) {
     let current_dir = env::current_dir().expect("Failed to get current dir");
-    let rusty_json_path = current_dir.join("rusty.json");
+    let rusty_json_path = current_dir.join("package.json");
 
     if !rusty_json_path.exists() {
-        println!("❌ rusty.json not found. Run `rusty-pm init` first.");
+        println!("❌ package.json not found. Run `rpm init` first.");
         return;
     }
 
@@ -16,9 +16,9 @@ pub fn remove(package: &str) {
     let mut manifest: RustyManifest =
         serde_json::from_reader(rusty_file_data).expect("Failed to parse rusty.json");
 
-    manifest.dependencies.retain(|dep| dep != package);
+    manifest.dependencies.retain(|dep| !dep.trim().starts_with(package));
 
-  let node_modules = current_dir.join("node_moduless");
+  let node_modules = current_dir.join("node_modules");
   let package_dir = node_modules.join(package);
 
   if package_dir.exists() {

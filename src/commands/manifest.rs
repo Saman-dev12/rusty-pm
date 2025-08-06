@@ -8,7 +8,8 @@ pub struct RustyManifest {
     pub version: String,
     pub author: String,
     pub description: String,
-  pub dependencies: Vec<String>,  
+    pub dependencies: Vec<String>,  
+    pub scripts: std::collections::HashMap<String, String>,
 }
 
 
